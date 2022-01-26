@@ -21,7 +21,6 @@ const Map = ({setCoords, setBounds, coords}) => {
                  setBounds({ sw: e.marginBounds.nw, ne: e.marginBounds.ne })
              }}
            >
-
            </GoogleMapReact>
        </div>
     )
