@@ -19,8 +19,6 @@ export const App = () => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({ coords: {latitude, longitude }}) => {
       setCoords({ lat: latitude, lng: longitude });
-
-      console.log(coords);
     })
   }, []);
 
@@ -37,7 +35,7 @@ export const App = () => {
              adverts={adverts}
           />
         }/>
-        <Route path='/advert/post' element={<Post/>}/>
+        <Route path='/advert/post' element={<Post setCoords={setCoords} setBounds={setBounds} coords={coords} />}/>
       </Routes>
     </ThemeProvider>
   )

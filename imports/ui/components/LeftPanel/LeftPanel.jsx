@@ -1,5 +1,6 @@
-import { Box, Button, Card, Grid, Paper, TextField, Typography } from '@material-ui/core';
 import React from 'react';
+import { Box, Button, Card, Grid, Paper, TextField, Typography } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
 import useStyles from './styles';
 
@@ -17,7 +18,7 @@ const LeftPanel = () => {
                         <TextField
                             type='number'
                             variant='outlined'
-                            label='Minimum'
+                            label='Min'
                             size='small'
                         />
                     </Grid>
@@ -25,12 +26,12 @@ const LeftPanel = () => {
                         <TextField
                             type='number'
                             variant='outlined'
-                            label='Maximum'
+                            label='Max'
                             size='small'
                         />
                     </Grid>
                     <Grid item xs={12} md={4}>
-                      <Button color='primary' variant='contained' size='small' style={{ height: '100%' }}>Rechercher</Button>
+                      <Button color='primary' variant='contained' size='small' style={{ height: '100%', width: '100%'}}><SearchIcon/></Button>
                     </Grid>
                </Grid>
             </Box>
@@ -71,7 +72,7 @@ const LeftPanel = () => {
                     />
             </Box>
             <Button  color='primary' variant='contained' size='large' style={{ width: '100%', marginTop: 5}}>
-                Rechercher
+                <SearchIcon/>
             </Button>
         </Paper>
     )

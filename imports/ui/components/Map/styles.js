@@ -5,7 +5,6 @@ export default makeStyles((theme) => ({
     mapContainer:{
         height: '50vh',
         width: '100%',
-        marginBottom: 5,
     },
     markerContainer: {
         position: 'absolute',

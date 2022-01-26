@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, CardHeader, CardMedia, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardContent, CardHeader, CardMedia, Grid, Paper, Typography } from '@material-ui/core';
 import React from 'react';
 
 import useStyles from './styles';
@@ -18,9 +18,11 @@ const List = ({ adverts }) => {
                     style={{ height: '300px'}}
                   />
                   <CardContent>
-                      <Box display='flex' alignItems='center' justifyContent='space-between'>
-                         <Typography variant='body2' color='textPrimary'>{advert.name}</Typography>
-                         <Typography variant='body2' color='textPrimary'>{advert.price}</Typography>
+                      <Box display='flex' alignItems='center' justifyContent='space-between' flexWrap='wrap'>
+                          <Typography variant='body2' color='textPrimary' className={classes.advertTitle}>{advert.name}</Typography>
+                         <Paper elevation={3} className={classes.advertPricePaper}>
+                          <Typography variant='body2' color='textPrimary' className={classes.advertPrice}>{advert.price}</Typography>
+                         </Paper>
                       </Box>
                       <Box mt={2}>
                         <Typography  variant='body2' color='textSecondary'>
