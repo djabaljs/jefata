@@ -13,7 +13,7 @@ const LeftPanel = () => {
             </Typography>
             <Box >
             <Grid container spacing={1}>
-                   <Grid item xs={12} md={4}>
+                   <Grid item xs={12} md={4} >
                         <TextField
                             type='number'
                             variant='outlined'

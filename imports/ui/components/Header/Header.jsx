@@ -17,7 +17,6 @@ import useStyles from './styles';
 import { Box } from '@material-ui/core';
 import Search from '@material-ui/icons/Search';
 
-
 const Header = () => {
 
     const classes = useStyles();
@@ -116,19 +115,6 @@ const Header = () => {
           <Typography className={classes.title} variant="h6" noWrap>
            Jefata
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">

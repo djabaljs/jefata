@@ -6,5 +6,11 @@ export default makeStyles((theme) => ({
         height: '50vh',
         width: '100%',
         marginBottom: 5,
+    },
+    markerContainer: {
+        position: 'absolute',
+        transform: 'translate(-50%, -50%)',
+        zIndex: 1,
+        '&:hover': { zIndex: 2}
     }
 }))
