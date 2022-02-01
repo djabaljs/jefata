@@ -3,8 +3,10 @@ import GoogleMapReact from 'google-map-react';
 
 
 import useStyles from './styles';
+import { Marker } from '@react-google-maps/api';
+import { Paper, Typography } from '@material-ui/core';
 
-const Map = ({setCoords, setBounds, coords}) => {
+const Map = ({setCoords, setBounds, coords, adverts}) => {
     const classes = useStyles();
 
     return (
@@ -21,6 +23,23 @@ const Map = ({setCoords, setBounds, coords}) => {
                  setBounds({ sw: e.marginBounds.nw, ne: e.marginBounds.ne })
              }}
            >
+               {adverts?.map(advert => (
+                   <div
+                    lat={Number(advert.lat)}
+                    lng={Number(advert.lng)}
+                    className={classes.markerContainer}
+                   >
+                     <Paper elevation={3} style={{ padding:'10px', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100px'}}>
+                        <Typography variant='p'> 
+                            {advert.name}
+                        </Typography>
+                        <img 
+                          src={advert.images[0]}
+                          style={{ width: '100%'}}
+                        />
+                     </Paper>
+                   </div>
+               ))}
            </GoogleMapReact>
        </div>
     )
