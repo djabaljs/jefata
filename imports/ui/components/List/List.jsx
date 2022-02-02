@@ -1,42 +1,30 @@
+import React, { useEffect, createRef, useState } from 'react';
 import { Box, Button, Card, CardContent, CardHeader, CardMedia, Grid, Paper, Typography } from '@material-ui/core';
-import React from 'react';
 
 import useStyles from './styles';
+import AdvertDetails from '../AdvertDetails/AdvertDetails';
 
 
-const List = ({ adverts }) => {
+const List = ({ adverts, childClicked }) => {
     
     const classes = useStyles();
+    const [elRefs, setElRefs] = useState([]);
 
+    useEffect(() => {
+      const refs =  Array(adverts?.length).fill().map((_, i) => elRefs[i] || createRef())
+
+      setElRefs(refs)
+    }, [adverts])
     return (
         <Grid container spacing={1} elevation={5}>
           {adverts?.map((advert, i) => (
-            <Grid item xs={12} md={5} key={i}>
-                  <Card key={i}>
-                  <CardMedia
-                    image={advert.images[0]}
-                    style={{ height: '300px'}}
-                  />
-                  <CardContent>
-                      <Box display='flex' alignItems='center' justifyContent='space-between'>
-                          <Typography variant='body2' color='textPrimary' className={classes.advertTitle}>{advert.name}</Typography>
-                          <Typography variant='body2' color='textPrimary' className={classes.advertPrice}>{advert.price}</Typography>
-                      </Box>
-                      <Box mt={2}>
-                        <Typography  variant='body2' color='textSecondary'>
-                            {advert.description}
-                        </Typography>
-                      </Box>
-                      <Box display='flex' alignItems='center' justifyContent='space-between' mt={2}>
-                        <img 
-                            src='https://www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png' 
-                            alt='user'
-                            style={{ width: '30px'}}
-                        />
-                        <Button variant='contained' color='primary'>Contacter</Button>
-                      </Box>
-                  </CardContent>
-              </Card>
+            <Grid ref={elRefs[i]} item xs={12} md={4} key={i}>
+              <AdvertDetails
+                advert={advert}
+                classes={classes}
+                selected={Number(childClicked == i)}
+                refProp={elRefs[i]}
+              />
             </Grid>
           ))}
         </Grid>
