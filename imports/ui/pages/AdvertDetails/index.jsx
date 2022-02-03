@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Container, Grid, Paper } from '@material-ui/core';
+import { Box, Button, Card, CardContent, Container, Grid, Paper } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
 import GoogleMapReact from 'google-map-react';
 import { AdvertsCollection } from '../../../api/AdvertsCollection';
@@ -25,40 +25,32 @@ const AdvertDetails = () => {
     }, [])
     
     return (
-        <Container maxWidth='lg' className={classes.advertDetailsContainer}>
-            <Paper elevation={3}>
-                <Grid container>
-                    <Grid item xs={12} md={6}>
-                        <Grid container>
-                            <Grid item xs={6} md={6}>
-                              <img  src={advert?.images[0]} id='main_image'/>
-                            </Grid>
-                        <Grid item xs={6} md={6}>
-                            <h3>{advert?.name}</h3>
-                            <p>
-                                {advert?.description}
-                            </p>
-                             <Box display='flex'flexDirection='column' justifyContent='end'>
-                             
+        <Container maxWidth='lg' className={classes.container}>
+            <Card elevation={3}>
+                <CardContent>
+                    <Grid container spacing={1}>
+                        <Grid item xs={12} md={5} className={classes.first}>
+                            <img src={advert?.images[0]} id='main_image' className={classes.firstMainImg} />
+                            <Box className={classes.otherImgContainer}>
+                                {advert?.images.map((image, i) => (
+                                    <li key={i} style={{ listStyle: 'none' }}>
+                                        <img src={image} className={classes.firstOtherImg} onClick={changeMainImage} />
+                                    </li>
+                                ))}
                             </Box>
                         </Grid>
+                        <Grid item xs={12} md={7} className={classes.second}>
+                            <Box display='flex' justifyContent='space-between'>
+                                <h1>{advert.name}</h1>
+                                <h1>{advert.price}</h1>
+                            </Box>
+                            <Box>
+                                {advert.description}
+                            </Box>
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} md={6}>
-                        <div style={{ width: '100%', height: '20vh'}}>
-                            <GoogleMapReact
-                                bootstrapURLKeys={{ key: 'AIzaSyCV0fwaxcIODNSeKnxTrNP0pYh8zeTRTiA' }}
-                                center={0}
-                                defaultZoom={14}
-                                margin={[50, 50, 50, 50]}
-                                options={''}
-                            >
-
-                            </GoogleMapReact>
-                        </div>
-                    </Grid>
-                </Grid>
-            </Paper>
+                </CardContent>
+            </Card>
         </Container>
     );
 }
