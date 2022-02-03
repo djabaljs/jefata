@@ -5,6 +5,8 @@ import GoogleMapReact from 'google-map-react';
 import { AdvertsCollection } from '../../../api/AdvertsCollection';
 import { useTracker } from 'meteor/react-meteor-data';
 import useStyles from './styles';
+import RoomIcon from '@material-ui/icons/Room';
+
 
 const AdvertDetails = () => {
     
@@ -21,9 +23,9 @@ const AdvertDetails = () => {
     }
 
     useEffect(() => {
-
+        setCoords({ lat: Number(advert.lat), lng: Number(advert.lng )})
+        console.log(coords)
     }, [])
-    
     return (
         <Container maxWidth='lg' className={classes.container}>
             <Card elevation={3}>
@@ -47,6 +49,21 @@ const AdvertDetails = () => {
                             <Box>
                                 {advert.description}
                             </Box>
+                            <div className={classes.secondMap}>
+                                <GoogleMapReact
+                                   bootstrapURLKeys={{ key: 'AIzaSyCV0fwaxcIODNSeKnxTrNP0pYh8zeTRTiA' }}
+                                   center={coords}
+                                   defaultZoom={14}
+                                   margin={[50, 50, 50, 50]}
+                                >
+                                 <div
+                                  lat={Number(advert.lat)}
+                                  lng={Number(advert.lng)}
+                                 >
+                                     <RoomIcon style={{ color: 'red', fontSize: 30}}/>
+                                 </div>
+                                </GoogleMapReact>
+                            </div>
                         </Grid>
                     </Grid>
                 </CardContent>

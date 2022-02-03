@@ -30,5 +30,10 @@ export default makeStyles((theme) => ({
             width: '80%',
             height: 400
         }
+    },
+    secondMap: {
+        height: 200,
+        width: '100%',
+        marginTop: theme.spacing(10)
     }
 }))

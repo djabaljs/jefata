@@ -6,7 +6,7 @@ import useStyles from './styles';
 import { Marker } from '@react-google-maps/api';
 import { Paper, Typography } from '@material-ui/core';
 
-const Map = ({setCoords, setBounds, coords, adverts, setChildClicked}) => {
+const Map = ({ setCoords, setBounds, coords, adverts, setChildClicked}) => {
     const classes = useStyles();    
     return (
        <div className={classes.mapContainer}>
